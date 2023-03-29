@@ -35,6 +35,8 @@ export class RegisterComponent implements OnInit {
 
     this.service.crearUsuario(nombre,correo,password)
     .then(credenciales =>{
+      console.log(credenciales);
+
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -42,6 +44,8 @@ export class RegisterComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+
+      this.router.navigate(['/login'])
     })
     .catch(error=>{
       console.log(error);
