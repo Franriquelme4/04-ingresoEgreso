@@ -1,0 +1,7 @@
+.main-content {
+  margin-left: 250px; /* Ajusta este valor según el ancho de tu sidebar */
+}
+ div.border-custom {
+  border: 1px solid #dee2e6;
+    border-radius: 3px;
+ }

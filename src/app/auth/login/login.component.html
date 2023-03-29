@@ -1,0 +1,39 @@
+
+
+<div class="p-col-6 ">
+  <h2>Login</h2>
+  <form class="card" [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="flex justify-content-center m-1">
+      <div class="flex flex-column gap-2">
+        <label htmlFor="email">Email</label>
+        <input pInputText id="email" aria-describedby="email-help" formControlName="email" />
+        <small id="assword-help">Enter your email</small>
+
+      </div>
+    </div>
+
+    <div class="flex justify-content-center">
+      <div class="flex flex-column gap-2">
+        <label htmlFor="password">Password</label>
+        <input pInputText id="password" aria-describedby="password-help" formControlName="password" />
+        <small id="assword-help">Enter your password.</small>
+      </div>
+    </div>
+
+    <div class="flex justify-content-center p-2">
+      <div class="flex flex-column gap-2">
+        <button pButton pRipple label="Login" class="p-button-primary" type="submit"></button>
+      </div>
+    </div>
+
+    <div class="text-block text-center my-3">
+      <span class="text-small font-weight-semibold">No estas registrado? </span>
+      <br>
+      <a routerLink="/register" class="text-black text-small">Crear una cuenta</a>
+    </div>
+
+
+  </form>
+
+
+</div>
