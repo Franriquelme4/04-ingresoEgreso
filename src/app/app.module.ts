@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-
 import { environment } from 'src/environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
@@ -23,6 +21,10 @@ import { IngresoEgresoComponent } from './ingreso-egreso/ingreso-egreso/ingreso-
 import { DetalleComponent } from './ingreso-egreso/detalle/detalle.component';
 import { EstadisticaComponent } from './ingreso-egreso/estadistica/estadistica.component';
 import { DashboardIngresoComponent } from './ingreso-egreso/dashboard-ingreso/dashboard-ingreso.component';
+import { appReduceres } from './app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AvatarModule } from 'primeng/avatar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 
 
@@ -45,16 +47,21 @@ import { DashboardIngresoComponent } from './ingreso-egreso/dashboard-ingreso/da
     AngularFireAuthModule,
     SharedModule,
     BrowserAnimationsModule,
-
-ButtonModule,
-InputTextModule,
-PanelModule,
-CardModule,
-SidebarModule
-
-
+    ButtonModule,
+    InputTextModule,
+    PanelModule,
+    CardModule,
+    SidebarModule,
+    AvatarModule,
+    ProgressSpinnerModule,
+    StoreModule.forRoot(appReduceres),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    })
   ],
-  exports:[
+
+  exports: [
     DashboardComponent
   ],
   providers: [],

@@ -22,9 +22,11 @@
 
     <div class="flex justify-content-center p-2">
       <div class="flex flex-column gap-2">
-        <button pButton pRipple label="Login" class="p-button-primary" type="submit"></button>
+        <button *ngIf="!loading" pButton pRipple label="Login" class="p-button-primary" type="submit"></button>
+        <p-progressSpinner *ngIf="loading" styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
       </div>
     </div>
+
 
     <div class="text-block text-center my-3">
       <span class="text-small font-weight-semibold">No estas registrado? </span>

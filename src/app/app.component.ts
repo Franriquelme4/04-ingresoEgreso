@@ -16,10 +16,7 @@ interface Item {
 })
 export class AppComponent {
   title = 'Ingreso Engreso';
-
-
   constructor(private authService:AuthService){
     this.authService.initAuthListener();
-
   }
 }

@@ -22,7 +22,7 @@
     <div class="flex justify-content-center">
       <div class="flex flex-column gap-2">
         <label htmlFor="password">Password</label>
-        <input pInputText id="password" aria-describedby="password-help" formControlName="password" />
+        <input pInputText id="password" aria-describedby="password-help" formControlName="password" type="password" />
         <small id="assword-help">Enter your password.</small>
       </div>
     </div>
@@ -30,7 +30,8 @@
 
     <div class="flex justify-content-center p-2">
       <div class="flex flex-column gap-2">
-        <button pButton pRipple label="Create Account" class="p-button-primary" type="Submit"></button>
+        <button *ngIf="!loading" pButton pRipple label="Create Account" class="p-button-primary" type="Submit"></button>
+        <p-progressSpinner *ngIf="loading" styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
       </div>
     </div>
 
