@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
+import { AppState } from 'src/app/app.reducer';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +10,13 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
-  constructor() { }
+  usuario:any='';
+  constructor(private store:Store<AppState>) {
+    this.store.select('user').subscribe(({user})=>{
+      this.usuario = user?.email;
+
+    })
+   }
 
   ngOnInit() {
     this.items = [{

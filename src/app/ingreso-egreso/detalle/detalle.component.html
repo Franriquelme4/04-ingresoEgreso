@@ -1,1 +1,28 @@
-<p>detalle works!</p>
+
+<div class="card">
+  <h2>Detalle Ingreso/Egreso</h2>
+  <h5>Especifique el monto y el tipo</h5>
+
+  <p-table [value]="ingresosEgresos" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Descripcion</th>
+            <th>Monto</th>
+            <th>Tipo</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>{{ product.descripcion }}</td>
+            <td>{{ product.monto | currency}}</td>
+            <td [ngClass]="{'text-green-400':product.tipo=='ingreso','text-red-500':product.tipo=='egreso'}" >{{ product.tipo | titlecase }}</td>
+            <td><button (click)="eliminar(product.uid)" class="text-white bg-red-500 border-red-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer ">Eliminar</button>
+
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+</div>

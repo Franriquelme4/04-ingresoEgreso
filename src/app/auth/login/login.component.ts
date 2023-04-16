@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import { isLoading, stopLoading } from '../../shared/ui.actions';
-import { Subscription } from 'rxjs';
+import { Subscription, timeout } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit ,OnDestroy{
   }
   ngOnDestroy(): void {
     this.uiSupscription.unsubscribe();
-
   }
 
   ngOnInit(): void {

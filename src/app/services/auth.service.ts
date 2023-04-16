@@ -7,6 +7,7 @@ import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import { setUser, unSetUser } from '../auth/auth.actions';
 import { Subscription } from 'rxjs';
+import { unSetItems } from '../ingreso-egreso/ingresoEgreso.actions';
 
 
 
@@ -15,7 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class AuthService implements OnDestroy {
   userSubscriptions:Subscription | undefined;
-
+ userData:Usuario | null = null;
   constructor(public auth: AngularFireAuth,public fireStore:AngularFirestore,private store:Store<AppState>) {
   }
   ngOnDestroy(): void {
@@ -31,12 +32,14 @@ export class AuthService implements OnDestroy {
               nombre:fireUser.nombre,
               email:fireUser.email
             }
+            this.userData = usuarioData;
             this.store.dispatch(setUser({user:{...usuarioData}}))
-
           })
       }else{
+        this.userData = null;
         this.userSubscriptions?.unsubscribe();
         this.store.dispatch(unSetUser())
+        this.store.dispatch(unSetItems())
       }
 
     })
@@ -70,5 +73,9 @@ export class AuthService implements OnDestroy {
     return this.auth.authState.pipe(
       map(fbuser=>fbuser!=null)
     );
+  }
+
+  get user(){
+    return {...this.userData};
   }
 }

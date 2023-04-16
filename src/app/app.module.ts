@@ -25,6 +25,9 @@ import { appReduceres } from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AvatarModule } from 'primeng/avatar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TableModule } from 'primeng/table';
+import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -37,7 +40,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     IngresoEgresoComponent,
     DetalleComponent,
     EstadisticaComponent,
-    DashboardIngresoComponent
+    DashboardIngresoComponent,
+    OrdenIngresoPipe
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     CardModule,
     SidebarModule,
     AvatarModule,
+    TableModule,
+    NgChartsModule,
     ProgressSpinnerModule,
     StoreModule.forRoot(appReduceres),
     StoreDevtoolsModule.instrument({

@@ -1,1 +1,30 @@
-<p>ingreso-egreso works!</p>
+
+<div class="card">
+  <h2>Agregar Ingreso/Egreso</h2>
+  <h5>Especifique el monto y el tipo</h5>
+  <form [formGroup]="ingresoForm" (ngSubmit)="guardar()">
+    <div class="field">
+      <label for="descripcion">Descripcion</label>
+      <input formControlName="descripcion" id="descripcion" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+  </div>
+  <div class="field">
+      <label for="monto">Monto</label>
+      <input formControlName="monto" id="monto" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+  </div>
+  <div class="field">
+    <label for="tipo">Tipo</label>
+    <select formControlName="tipo" id="tipo" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+        <option value="ingreso" selected>Ingreso</option>
+        <option value="egreso">Egreso</option>
+    </select>
+</div>
+<div *ngIf="loading" class="flex justify-content-center" >
+  <p-progressSpinner  styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+</div>
+
+  <button  *ngIf="!loading" [disabled]="ingresoForm.invalid" type="submit" class="text-white bg-primary-500 border-primary-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer transition-all transition-duration-200 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700">Agregar</button>
+
+  </form>
+
+
+</div>
