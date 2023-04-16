@@ -6,15 +6,16 @@ import { Usuario } from '../models/usuario.models';
 import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import { setUser, unSetUser } from '../auth/auth.actions';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { unSetItems } from '../ingreso-egreso/ingresoEgreso.actions';
+import { CanLoad, Route, UrlSegment, UrlTree } from '@angular/router';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnDestroy {
+export class AuthService implements OnDestroy{
   userSubscriptions:Subscription | undefined;
  userData:Usuario | null = null;
   constructor(public auth: AngularFireAuth,public fireStore:AngularFirestore,private store:Store<AppState>) {

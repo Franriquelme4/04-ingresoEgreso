@@ -20,9 +20,6 @@ import { MenubarModule} from 'primeng/menubar'
     ButtonModule,
     MenuModule,
     MenubarModule
-
-
-
   ],
   exports:[
     FooterComponent,
